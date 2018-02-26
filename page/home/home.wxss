@@ -1,0 +1,21 @@
+.home-board{text-align: center;padding:10rpx;}
+.home-board .home-color{padding:60rpx 0;font-size: 34rpx;color: #fff;border-radius: 10rpx;}
+.home-board > view{margin-bottom: 10rpx;}
+.home-color1{background-color:#05be7b;margin-right:10rpx; }
+.home-color2{background-color:#2a96ff; }
+.home-color3{background-color:#38c5c0;margin-right:10rpx; }
+.home-color4{background-color:#46b7ff; }
+.home-color5{background-color:#db774b;margin-right:10rpx; }
+.home-color6{background-color:#db6472; }
+.home-panel{margin:0 10rpx 10rpx 10rpx;border-radius: 10rpx;}
+.home-panel::after{border: none;}
+.home-panel::before{border: none;}
+.home-panel .home-panel-title{color:#4089fe;}
+.home-panel-title picker{float: right;font-size: 13px;color:#999;}
+.home-panel-title picker image{width:25rpx;height:16rpx;}
+.weui-search-bar{background-color:#000;border-top:none}
+.weui-search-bar__label,.weui-search-bar__form{border-radius: 15px;}
+.home-top{position: relative; background-color: #000;padding:15rpx 17rpx 15rpx 100rpx;}
+.home-top .home-btn{margin: 0;background-color: #fff;color:#b2b2b2;font-size: 26rpx;border-radius: 15px;vertical-align: middle}
+.home-top image.home-ewm{width:28px;height:28px;position: absolute;top:15rpx;left: 20rpx;}
+.home-top image.home-search{height:35rpx;width:35rpx;margin-top:5rpx;margin-right:10rpx;vertical-align: text-top}

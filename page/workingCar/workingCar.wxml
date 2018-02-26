@@ -1,0 +1,37 @@
+<view class="page">
+  <view class="car-number">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">车牌号</view>
+      <view class="weui-cell__ft">
+        <input placeholder="输入车牌号" bindinput="carNumber" type="text" name="carNumber" value="{{carNumber}}" focus="{{true}}" />
+      </view>
+    </view>
+  </view>
+  <view class="result-box" hidden='{{show_result}}'>
+    <view class="cover-box">
+      <view class="weui-panel weui-panel_access all-result">
+                <view wx:for="{{carNumberList}}" class="weui-cell" hover-class="weui-cell_active" data-index="{{index}}" bindtap="ChoosefindFun">
+                  <view class="weui-cell__bd"></view>
+                  <view class="weui-cell__ft">{{item}}</view>
+                </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-area">
+    <button type="primary" bindtap="goHome">进入首页</button>
+  </view>
+
+  <view class="weui-cells__title title">最近作业车辆</view>
+  <view class="page__bd">
+    <view class="weui-panel weui-panel_access">
+      <view wx:for="{{alwayNumberList}}" data-index="{{index}}"  class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="ChooseAlwayFun" >
+        <view class="weui-cell__bd">{{item}}</view>
+      </view>
+      
+     
+    </view>
+  </view>
+
+
+</view>

@@ -1,0 +1,21 @@
+/* page/login/login.wxss */
+.login-title{margin:170rpx 0 60rpx 0;text-align: center;font-size:40rpx;}.weui-cell__ft{text-align: left;flex: 3;}input{color:#000;}button{margin:60rpx 30rpx 0 30rpx;}
+.login-message{color:#b2b2b2;font-size:20rpx;text-align: center;position: absolute;bottom:20rpx;width:100%;}
+.weui-cell__bd{width:4em;webkit-box-flex:0.7;-webkit-flex:0.7;flex:0.7;}
+.page{position: relative;top:0; left:0; padding-top:360rpx;}
+.logo-img{width:100%; height:360rpx; position: absolute; top:0; left:0; text-align: center;}
+.logo-img image{display: inline-block;width: 200rpx; height: 200rpx;margin-top: 80rpx;}
+.login-way{width: 100%;margin-top:20rpx; text-align: center;}
+.login-way view,button.go-btn{display: inline-block;color: #458cfa;margin:0 auto;background: transparent; border:none; outline: 0; }
+.weui-cell__ft{position: relative;padding-right: 40rpx; box-sizing: border-box}
+.get-phone input{padding-right: 205rpx; box-sizing: border-box}
+button.go-btn::after{-webkit-transform:scale(0);transform:scale(0);}
+.eyes{position: absolute; top:0; right:0;z-index:5;display: inline-block;vertical-align: middle;height: 1.4rem;line-height:1.4rem;text-align: right;}
+.eyes image{display: inline-block;width: 32rpx; height: 20rpx; }
+.get-number{position: absolute; top:-3rpx ;right:0rpx; z-index: 5; vertical-align: middle;display: inline-block;}
+.borer-btn{margin:0; font-size: 1em;}
+button.mini-btn{margin: 0; background: transparent; border:1px solid #458cfa; color: #458cfa;padding:15rpx 10rpx; font-size: 
+30rpx;display: inline-block; line-height: 1em; }
+button.mini-btn[disabled][type="primary"],.btn-click{background: transparent; opacity: .5;color: #458cfa;}
+.phone-inpt{flex: 1;}
+button.clickClass{border: 1px solid #000;color:#000; opacity:.2;}

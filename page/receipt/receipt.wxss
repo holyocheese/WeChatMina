@@ -1,0 +1,11 @@
+/* page/receipt/receipt.wxss */
+.weui-cells{margin-top:0;}
+.weui-uploader__bd{overflow:visible;margin-bottom: 0;}
+.page__hd{padding:36rpx 0 20rpx 15px;font-size:17px;color:#888;}
+.receipt-btn{padding:30px 15px;}
+.weui-uploader__files{overflow:visible;}
+.weui-uploader__file{position: relative;overflow:visible;}
+.receipt-img-btn{position: absolute;top:-18rpx;right: -18rpx;width:40rpx;height:40rpx;}
+.receipt-cell{padding-bottom: 0;}
+.weui-uploader__file{margin-right: 15px;}
+.addhidden{display: none}

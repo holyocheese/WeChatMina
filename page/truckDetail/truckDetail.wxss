@@ -1,0 +1,22 @@
+/* page/truckDetail/truckDetail.wxss */
+.truckDetail-panel{margin-top:0}
+.truckDetail-panel::after{border: none;}
+.truckDetail-panel::before{border: none;}
+.truckDetail-media-box-nopadding{padding:0 15px;}
+.truckDetail-media-box::before{border: none}
+.truckDetail-panel .weui-media-box__hd_in-appmsg{width:58rpx;height:58rpx;line-height: 58rpx;}
+.truckDetail-ti{background-color: #ecf3ff;color:#4089fe;}
+.truckDetail-song{background-color: #ffefe5;color:#ff6600;}
+.truckDetail-board{margin-top:10rpx;}
+.truckDetail-board:first-of-type{margin-top:0;}
+.truckDetail-hd image{width:116rpx;height:116rpx;}
+.truckDetail-bottom{text-align: center;position: fixed;bottom:0;left:0;width:100%;}
+.truckDetail-color1{background-color: #fff;}
+.truckDetail-color2{background-color: #ec412c;color:#fff;}
+.truckDetail-color3{background-color: #4089fe;color:#fff;}
+.truckDetail-color{padding:30rpx 0;}
+.truckDetail-bmargin{margin-bottom: 130rpx;}
+image.truckDetail-dth{width: 94rpx;height:94rpx;position: absolute;top:0;right: 0;}
+.truckDetail-zt{background-image:url(../../images/statu-zt.png);background-size: 94rpx 94rpx;background-repeat: no-repeat;background-position: 100% 0;}
+.truckDetail-ywc{background-image:url(../../images/statu-ywc.png);background-size: 94rpx 94rpx;background-repeat: no-repeat;background-position: 100% 0;}
+view.weui-media-box__desc{display: block;}

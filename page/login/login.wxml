@@ -1,0 +1,58 @@
+<view class="page">
+    <view class="logo-img"><image  src="../../images/logo.png"></image></view>
+<view hidden="{{number_login}}">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">账号</view>
+            <view class="weui-cell__ft">
+                <input type="text" placeholder="手机号或用户名" value="{{NumUserName}}" bindinput="NumUserNameFun"/>
+                <view class="weui-icon-clear"  wx:if="{{NumUserName.length > 0}}" bindtap="clearNumInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd">密码</view>
+            <view class="weui-cell__ft">
+            <block wx:if="{{NumShow}}">
+              <input placeholder="请输入登录密码" password="{{true}}" bindinput="NumUserPasswordFun" type="password" value="{{NumUserPassword}}" />
+            </block>
+            <block wx:else>
+              <input placeholder="请输入登录密码"  bindinput="NumUserPasswordFun" type="text" value="{{NumUserPassword}}" />
+            </block>
+              <view class="eyes" catchtap="NumShowPassword">
+                  <image src="../../images/{{NumEyeSate}}.png"></image>
+              </view>
+            </view>
+        </view>
+    </view>
+    <view>
+        <button bindtap="logInBut" type="primary">登录</button>
+        <view class="login-way"><button class="go-btn"  type="primary" size="mini" bindtap="phoneLogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="none">手机验证登录</button></view>
+    </view>
+</view>
+<view hidden="{{phone_login}}">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd phone-inpt">手机号</view>
+            <view class="weui-cell__ft">
+                  <input type="number"  name="PhoneUserNameInput" placeholder="手机号码" value="{{PhoneUserName}}"  bindinput="PhoneUserNameInput" maxlength="{{11}}"/>
+                  <view class="weui-icon-clear"  wx:if="{{PhoneUserName.length > 0}}" bindtap="clearPhoneInput">
+                        <icon type="clear" size="14"></icon>
+                  </view>
+            </view>
+        </view>
+        <view class="weui-cell">
+            <view class="weui-cell__bd phone-inpt">验证码</view>
+            <view class="weui-cell__ft  get-phone">
+              <input placeholder="请输入验证码"  bindinput="PhoneUserPasswordInput" type="number"  name="PhoneUserPasswordInput" value="{{PhoneUserPassword}}" maxlength="{{6}}"/>
+               <view class="get-number" ><button class="mini-btn {{isClick}}" disabled="{{IdentifyingBtn}}" type="primary" size="mini" hover-class="btn-click" catchtap="getIdentifying">{{btnText}}</button></view>
+            </view>
+        </view>
+    </view>
+    <view>
+        <button bindtap="mailLogInBut" type="primary" disabled="{{phoneBtn}}">登录</button>
+        <view class="login-way"><button class="go-btn"  type="primary" size="mini" bindtap="numberLogin" hover-class="none">账号密码登录</button></view>
+    </view>
+</view>
+</view>

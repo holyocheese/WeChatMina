@@ -1,0 +1,98 @@
+<view class="page flex-wrp">
+<scroll-view class=' flex-item task-swiper' scroll-x="true" scroll-left="{{scrollLeft}}" upper-threshold="{{upper}}" lower-threshold="{{lower}}">
+          <view wx:for="{{list}}" class=" {{_num==index?'click-list':''}}" bindtap="click_list" data-num="{{index}}">{{item}}</view>
+</scroll-view>
+<view class=' flex-item find-box'>
+      <view class='choose'>
+          <view hover-class="weui-cell_active" style=" {{pickCityClass}}" bindtap="pickCityFun">{{pickerText}}<image class='fist-icon {{showIcon1}}' src='../../images/task_01.png'/></view>
+          <view hover-class="weui-cell_active" style=" {{unloadCityClass}}" bindtap="unloadCityFun">{{unloadText}}<image class='fist-icon {{showIcon2}}' src='../../images/task_01.png'/></view>
+          <view hover-class="weui-cell_active" style="{{sortClass}}" bindtap="sortFun">{{isChooseSort}}<image class='second-icon {{showIcon3}}' src='../../images/task_01.png'/></view>
+      </view>
+      <navigator hover-class="view-hover" bindtap="toSearch" class='find'><image src="../../images/task_03.png"/></navigator>
+</view>
+<!-- 提货地 开始 -->
+<view class="section city-box" hidden='{{pick_city}}'>
+ <view class="weui-cells__title title" >请选择</view>
+ <view class="now-position" hover-class="weui-cell_active" bindtap="pickChooseCity" data-text="{{thsPosition}}">{{thsPosition}}</view>
+ <view class="flex-wrp city-reslut">
+      <view class="city-item" hover-class="weui-cell_active" wx:for="{{PcityArr}}" bindtap="pickChooseCity" data-text="{{item.name}}" data-pcode="{{item.code}}">{{item.name}}</view>
+ </view>
+</view>
+<!-- 提货地 结束 -->
+<!-- 卸货地 开始 -->
+<view class="section city-box" hidden='{{unload_city}}'>
+ <view class="weui-cells__title title">请选择</view>
+ <view class="now-position" hover-class="weui-cell_active" bindtap="unloadChooseCity" data-text="{{thsPosition}}">{{thsPosition}}</view>
+ <view class="flex-wrp city-reslut">
+      <view class="city-item" hover-class="weui-cell_active" wx:for="{{RcityArr}}" bindtap="unloadChooseCity" data-text="{{item.name}}" data-pcode="{{item.code}}">{{item.name}}</view>
+ </view>
+</view>
+<!-- 卸货地 结束 -->
+<!-- 排序 开始 -->
+<view class="weui-panel weui-panel_access sort-box" hidden="{{sort_list}}">
+    <view class="weui-cell  {{sortNum == index ? 'sort-click':'' }}" hover-class="weui-cell_active" wx:for="{{sort}}" bindtap="click_sort" data-sortnum="{{index}}">{{item}}</view>
+</view>
+<!-- 排序 结束 -->
+<!-- 搜索结果显示 <scroll-view scroll-y style="height: 100%;" bindscrolltoupper="upper"> 开始-->
+
+<view class="page__bd" hidden='{{show_result}}'>
+
+       <view class="weui-media-box__desc good-msg" style='margin:20px;text-align:center' wx:if="{{showData.length == 0}}">没有相关数据</view>
+        <view class="weui-panel weui-panel_access"  wx:for="{{showData}}" >
+            <view class="weui-panel__bd" bindtap="clickUrlFun" data-trucknum="{{item.TRACK_SN}}"
+            data-ordersn="{{item.ORDER_SN}}" data-id="{{item.ID}}">
+                <view class="weui-media-box weui-media-box_appmsg title-box" hover-class="none">
+                <!-- 左上角图片 开始-->
+                <block wx:if="{{item.STATUS=='ZL1606016'}}">
+                    <image class="tag" src="../../images/statu-dth.png" />
+                    </block>
+                <block wx:if="{{item.STATUS=='ZL1606017'}}">
+                    <image class="tag" src="../../images/statu-zt.png" />
+                    </block>
+                <block wx:if="{{item.STATUS=='ZL1606018'||item.STATUS=='ZL1606019'||item.STATUS=='ZL1606020'}}">
+                    <image class="tag" src="../../images/statu-ywc.png" />
+                    </block>
+                <!-- 左上角图片 结束-->
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title weui-media-box__title_in-text" style="font-size:14.5px">客户单号：{{item.CLIENT_NUMBER}}</view>
+                        <view class="weui-media-box__desc good-msg">{{item.TOTAL_WEIGHT}}吨  {{item.TOTAL_VOLUME}}方  {{item.TOTAL_PAKAGES}}件</view>
+                        <view class="button-sp-area min-btn">
+                          <button class="mini-btn" wx:if="{{item.STATUS=='ZL1606016'}}" type="primary" size="mini" catchtap="takeFun" data-orderId="{{item.ID}}">提货</button>
+                          <button class="mini-btn" wx:if="{{item.STATUS=='ZL1606017'}}" type="primary" size="mini" catchtap="fetchFun" data-orderId="{{item.ID}}" data-isreceipt="{{item.ISLAST}}" data-trucksn="{{item.TRACK_SN}}">到达</button>
+                          <button class="mini-btn bhd-btn" wx:if="{{item.STATUS=='ZL1606018'||item.STATUS=='ZL1606019'||item.STATUS=='ZL1606020'}}" data-orderId="{{item.ID}}" type="primary" size="mini" catchtap="goreceipt" data-trucksn="{{item.TRACK_SN}}" data-isreceipt="{{item.ISLAST}}" style="padding:0 1.0em">补回单</button>
+                        </view>
+                    </view>
+                </view>
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="none">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <view class="weui-media-box__thumb up-bg">提</view>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__desc">{{item.SENDERS_NAME}} {{item.SENDERS_DETAILADDRESS}}</view>
+                        <view class='call'  catchtap="callFun" data-phone="{{item.SENDERS_PHONE}}">
+                            <image  src="../../images/call.png"></image>
+                        </view>
+                        
+                    </view>
+                </view>
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="none">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <view class="weui-media-box__thumb xie-bg">卸</view>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__desc">{{item.RECIPIENT_NAME}} {{item.RECIPIENT_DETAILADDRESS}}</view>
+                        <image class='call' src="../../images/call.png" catchtap="callFun"
+                        data-phone="{{item.RECIPIENT_PHONE}}"></image>
+                    </view>
+                </view>
+            </view>
+            
+        </view>
+       
+    </view>
+    
+<!-- 搜索结果显示 结束-->
+</view>

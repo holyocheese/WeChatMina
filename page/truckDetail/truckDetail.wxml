@@ -1,0 +1,119 @@
+<!--page/truckDetail/truckDetail.wxml-->
+<view class="truckDetail-board">
+    <view class="weui-panel truckDetail-panel  {{truckDetail_statu}}">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text">
+              <!-- 右上角图片 开始-->
+                <block wx:if="{{showData.STATUS=='ZL1606016'}}">
+                    <image class="truckDetail-dth" src="../../images/statu-dth.png" />
+                </block>
+                <block wx:if="{{showData.STATUS=='ZL1606017'}}">
+                    <image class="truckDetail-dth" src="../../images/statu-zt.png" />
+                </block>
+                <block wx:if="{{showData.STATUS=='ZL1606018'||showData.STATUS=='ZL1606019'||showData.STATUS=='ZL1606020'}}">
+                    <image class="truckDetail-dth" src="../../images/statu-ywc.png" />
+                </block>
+                <!-- 右上角图片 结束-->
+                <view class="weui-media-box__title weui-media-box__title_in-text">运单信息</view>
+                <view class="weui-media-box__desc">
+                    <view>客户单号：{{showData.CLIENT_NUMBER}}</view>
+                    <view>客户名称：{{showData.CNAME}}</view>
+                    <view>运单号：{{showData.TRUCKING_NUMBER}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-panel weui-panel_access truckDetail-panel">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_appmsg truckDetail-media-box-nopadding">
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <view class="truckDetail-ti ">提</view>
+                </view>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__desc">
+                        <view>{{showData.SENDERS_NAME}} {{showData.SENDERS_PHONE}}</view>
+                        <view>{{showData.SENDERS_DETAILADDRESS}}</view>
+                        <view>提货要求时间：{{showData.REQ_PICK_STARTTIME}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-media-box weui-media-box_appmsg truckDetail-media-box">
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <view class="truckDetail-song">送</view>
+                </view>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__desc">
+                        <view>{{showData.RECIPIENT_NAME}} {{showData.RECIPIENT_PHONE}}</view>
+                        <view>{{showData.RECIPIENT_DETAILADDRESS}}</view>
+                        <view>送货要求：{{showData.ETA_STARTTIME}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+<view class="truckDetail-board">
+    <view class="weui-panel truckDetail-panel">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text">
+                <view class="weui-media-box__title weui-media-box__title_in-text">货物信息</view>
+                <view class="weui-media-box__desc">
+                    <view>货物类型：{{cargoType}}</view>
+                    <view>货物重量(t)：{{showData.TOTAL_WEIGHT}}</view>
+                    <view>货物体积(m³)：{{showData.TOTAL_VOLUME}}</view>
+                    <view>货物件数：{{showData.TOTAL_PAKAGES}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+<view class="truckDetail-board">
+    <view class="weui-panel truckDetail-panel">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text">
+                <view class="weui-media-box__title weui-media-box__title_in-text">节点信息</view>
+                <view class="weui-media-box__desc">
+                    <view wx:if="{{fpsj}}">分配时间：{{fpsj}}</view>
+                    <view wx:if="{{thsj}}">提货时间：{{thsj}}</view>
+                    <view wx:if="{{ddsj}}">到达时间：{{ddsj}}</view>
+                    <view wx:if="{{hdsj}}">回单时间：{{hdsj}}</view>
+                    <view wx:if="{{bhdsj}}">补回单时间：{{bhdsj}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<block wx:if="{{showData.STATUS!='ZL1606016'&&showData.STATUS!='ZL1606017'}}">
+<view class="truckDetail-board truckDetail-bmargin">
+    <view class="weui-panel truckDetail-panel">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text">
+                <view class="weui-media-box__title weui-media-box__title_in-text">回单信息</view>
+                <view class="weui-media-box__desc">
+                    <view class="weui-flex truckDetail-hd">
+                        <block wx:for="{{showImageData}}">
+                        <view class="weui-flex__item"><view class="placeholder"><image data-src="{{item}}"catchtap='previewImage' src="{{item}}"></image></view></view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+</block>
+
+<view class="truckDetail-bottom">
+    <view class="weui-flex">
+        <view class="weui-flex__item truckDetail-color truckDetail-color3 " catchtap="onPick" wx:if="{{showData.STATUS=='ZL1606016'}}" data-orderId="{{showData.ID}}" data-trucksn="{{showData.TRACK_SN}}"><view class="placeholder">一键提货</view></view>
+        <view class="weui-flex__item truckDetail-color truckDetail-color3 " catchtap="onArrive" wx:if="{{showData.STATUS=='ZL1606017'}}" data-trucksn="{{showData.TRACK_SN}}" data-orderId="{{showData.ID}}" data-isreceipt="{{showData.ISLAST}}"><view class="placeholder">一键到达</view></view>
+        <view class="weui-flex__item truckDetail-color truckDetail-color1 " catchtap="onRetract" wx:if="{{showData.STATUS=='ZL1606018'||showData.STATUS=='ZL1606019'||showData.STATUS=='ZL1606020'}}"><view class="placeholder">撤销到达</view></view>
+        <view class="weui-flex__item truckDetail-color truckDetail-color1 " catchtap="onRetract" wx:if="{{showData.STATUS=='ZL1606017'}}"><view class="placeholder">撤销提货</view></view>
+        <view class="weui-flex__item truckDetail-color truckDetail-color2" catchtap="goabnormal"><view class="placeholder">异常登记</view></view>
+        <view class="weui-flex__item truckDetail-color truckDetail-color3" catchtap="goreceipt"wx:if="{{showData.STATUS!='ZL1606017'&& showData.STATUS!='ZL1606016'}}"><view class="placeholder">补回单</view></view>
+    </view>
+</view>

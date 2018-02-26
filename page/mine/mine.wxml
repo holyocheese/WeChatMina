@@ -1,0 +1,17 @@
+<!--page/mine/mine.wxml-->
+<view class="page">
+    <view class="mine-top">
+        <image src="../../images/mine-logo.png"></image>
+        <view class="mine-message">
+            <view class="mine-phone">{{phone}}</view>
+            <view>{{cp}}/{{gs}}</view>
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_access mine-cell" catchtap="goqhcl">
+        <view class="weui-cell__bd">
+            <view style="display: inline-block; vertical-align: middle">切换车辆</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+    <button class="weui-btn mine-btn" type="primary" plain="true" bindtap="goLogin">退出登录</button>
+</view>

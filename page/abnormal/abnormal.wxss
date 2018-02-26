@@ -1,0 +1,15 @@
+/* page/abnormal/abnormal.wxss */
+.page{padding-top:30rpx;}
+.weui-cells{margin-top:0;}
+.weui-uploader__bd{overflow:visible;margin-bottom: 0;}
+.page__hd{padding:36rpx 0 20rpx 15px;font-size:17px;color:#888;}
+.abnormal-btn{padding:30px 15px;}
+.abnormal-top{margin-top:30rpx;}
+.weui-select{border-right: 0;}
+.weui-uploader__files{overflow:visible;}
+.weui-uploader__file{position: relative;overflow:visible;}
+.abnormal-img-btn{position: absolute;top:-18rpx;right: -18rpx;width:40rpx;height:40rpx;}
+.abnormal-cell{padding-bottom: 0;}
+.abnormal-aright{text-align: right;}
+.weui-uploader__file{margin-right: 15px;}
+.addhidden{display: none}

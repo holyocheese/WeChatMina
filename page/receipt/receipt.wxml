@@ -1,0 +1,30 @@
+<view class="page" catchtap="btnclose">
+    <view class="page__hd">
+        <view class="page__desc">请上传电子回单</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells">
+            <view class="weui-cell receipt-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{files}}" wx:key="*this">
+                                    <view class="weui-uploader__file" id="{{item}}">
+                                        <image class="weui-uploader__img" catchtap='previewImage' src="{{item}}" mode="aspectFill" />
+                                        <image class="receipt-img-btn" id="{{item}}" catchtap="deleteimg" src="../../images/closeBtn.png" />
+                                    </view>
+                                </block>
+                            </view>
+                            <view class="weui-uploader__input-box {{addhidden}}">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="receipt-btn"><button class="weui-btn" type="primary" bindtap="receipt">保存</button></view>
+    </view>
+</view>

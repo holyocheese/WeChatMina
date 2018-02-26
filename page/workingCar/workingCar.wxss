@@ -1,0 +1,12 @@
+.page{width: 100%;height: 100%;position: relative;padding-top:400rpx;box-sizing: border-box}
+.car-number{position: fixed;left:0;top:0;z-index: 8; padding-top: 30rpx; width: 100%; height:60rpx; background: #F8F8F8; }
+.car-number .weui-cell{background: #fff;border-bottom: 1px solid #F8F8F8;}
+.weui-cell__ft{text-align: left;flex: 3;}input{color:#000;}button{margin:60rpx 30rpx 0 30rpx;}
+.weui-cells__title{margin-top: 180rpx;}
+.result-box{position: absolute; top:125rpx; left:0;z-index:5; width: 100%; height: 100%;}
+.cover-box{width: 100%; height: 100%; background:rgba(0,0,0,.2);}
+.weui-media-box__hd_in-appmsg{height: auto;}
+.all-result{height:100%; overflow-y: auto;}
+.all-result::after{border-bottom:0;}
+.btn-area{position: fixed; top:60rpx; left: 0; z-index: 2;background: #F8F8F8;padding:0 0 30rpx 0;}
+.title{position: fixed; top:120rpx; left: 0; z-index: 2;width: 100%; padding-top:30rpx;padding-bottom:15rpx;background: #F8F8F8;}

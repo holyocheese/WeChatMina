@@ -1,0 +1,52 @@
+<!--page/abnormal/abnormal.wxml-->
+<view class="page" catchtap="btnclose">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">异常类型</view>
+            </view>
+            <view class="weui-cell__bd abnormal-aright">
+                <picker bindchange="bindAccountChange" range-key="name" range="{{errType}}"
+                value="{{Index}}">
+                    <view class="weui-select weui-select_in-select-after">{{errType[Index].name}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="异常描述" maxlength='250' auto-height='true' placeholder-style='color:#b2b2b2'bindinput="errdescribe" />
+                    <view class="weui-textarea-counter">{{textCount}}/250</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page__hd">
+        <view class="page__desc">异常图片</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells">
+            <view class="weui-cell abnormal-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{files}}" wx:key="*this">
+                                    <view class="weui-uploader__file" id="{{item}}">
+                                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" catchtap='previewImage' />
+                                        <image class="abnormal-img-btn" id="{{item}}" catchtap="deleteimg" src="../../images/closeBtn.png" />
+                                    </view>
+                                </block>
+                            </view>
+                            <view class="weui-uploader__input-box  {{addhidden}}">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="abnormal-btn"><button class="weui-btn" type="primary" bindtap="onErr">保存</button></view>
+    </view>
+</view>
+

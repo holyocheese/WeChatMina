@@ -1,0 +1,104 @@
+<!--page/search/search.wxml-->
+<view class="search-top">
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="客户单号、运单号或收发货人姓名" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <!-- <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">客户单号、运单号或收发货人姓名</view>
+            </label> -->
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">清空</view>
+    </view>
+
+    <!-- <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+        <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">
+                <view>实时搜索文本</view>
+            </view>
+        </navigator>
+        <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">
+                <view>实时搜索文本</view>
+            </view>
+        </navigator>
+        <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">
+                <view>实时搜索文本</view>
+            </view>
+        </navigator>
+        <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">
+                <view>实时搜索文本</view>
+            </view>
+        </navigator>
+    </view> -->
+</view>
+
+<view class='search-zjsc' hidden='{{history_result}}'>
+    <view wx:if="{{historyArray.length>0}}" class="search-title">最近搜索</view>
+    <view class="search-result">
+        <view wx:for="{{historyArray}}" bindtap="choose" data-text="{{index}}">{{item}}</view>
+    </view>
+</view>
+<!-- 搜索结果显示 开始-->
+<view class="page__bd" hidden='{{show_result}}'>
+        <view class="weui-media-box__desc good-msg" style='margin:20px;text-align:center' wx:if="{{showData.length == 0 && history_result}}">没有相关数据</view>
+        <view class="weui-panel weui-panel_access"  wx:for="{{showData}}" >
+            <view class="weui-panel__bd" bindtap="clickUrlFun" data-trucknum="{{item.TRACK_SN}}"
+            data-ordersn="{{item.ORDER_SN}}" data-id="{{item.ID}}">
+                <view class="weui-media-box weui-media-box_appmsg title-box" hover-class="none">
+                <!-- 左上角图片 开始-->
+                <block wx:if="{{item.STATUS=='ZL1606016'}}">
+                    <image class="tag" src="../../images/statu-dth.png" />
+                    </block>
+                <block wx:if="{{item.STATUS=='ZL1606017'}}">
+                    <image class="tag" src="../../images/statu-zt.png" />
+                    </block>
+                <block wx:if="{{item.STATUS=='ZL1606018'||item.STATUS=='ZL1606019'||item.STATUS=='ZL1606020'}}">
+                    <image class="tag" src="../../images/statu-ywc.png" />
+                    </block>
+                <!-- 左上角图片 结束-->
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title weui-media-box__title_in-text" style="font-size:14.5px">客户单号：{{item.CLIENT_NUMBER}}</view>
+                        <view class="weui-media-box__desc good-msg">{{item.TOTAL_WEIGHT}}吨  {{item.TOTAL_VOLUME}}方  {{item.TOTAL_PAKAGES}}件</view>
+                        <view class="button-sp-area min-btn">
+                          <button class="mini-btn" wx:if="{{item.STATUS=='ZL1606016'}}" type="primary" size="mini" catchtap="takeFun" data-orderId="{{item.ID}}">提货</button>
+                          <button class="mini-btn" wx:if="{{item.STATUS=='ZL1606017'}}" type="primary" size="mini" catchtap="fetchFun" data-orderId="{{item.ID}}">送达</button>
+                          <button class="mini-btn" wx:if="{{item.STATUS=='ZL1606018'||item.STATUS=='ZL1606019'||item.STATUS=='ZL1606020'}}" data-orderId="{{item.ID}}" type="primary" size="mini" catchtap="receiptFun" >补回单</button>
+                        </view>
+                    </view>
+                </view>
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="none">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <view class="weui-media-box__thumb up-bg">提</view>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__desc">{{item.SENDERS_NAME}} {{item.SENDERS_DETAILADDRESS}}</view>
+                            <image class='call' src="../../images/call.png"></image>
+                        
+                    </view>
+                </view>
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="none">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <view class="weui-media-box__thumb xie-bg">卸</view>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__desc">{{item.RECIPIENT_NAME}} {{item.RECIPIENT_DETAILADDRESS}}</view>
+                        <image class='call' src="../../images/call.png" catchtap="callFun"></image>
+                    </view>
+                </view>
+            </view>
+            
+        </view>
+    </view>
+<!-- 搜索结果显示 结束-->

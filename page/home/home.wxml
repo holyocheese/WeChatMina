@@ -1,0 +1,53 @@
+<view class="home-top">
+    <image class="home-ewm" src="../../images/ewm.png" catchtap="doewm"></image>
+    <button class="weui-btn home-btn" type="primary" catchtap='gosearch'><image class="home-search" src="../../images/home-search.png"></image>客户单号、运单号或收发货人姓名</button>
+</view>
+
+
+<view class="home-board">
+    <view class="weui-flex">
+        <view class="weui-flex__item home-color home-color1" bindtap='waitFun'><view class="placeholder">待提货({{dth}})</view></view>
+        <view class="weui-flex__item home-color home-color2" bindtap='arriveFun'><view class="placeholder">待到达({{ddd}})</view></view>
+    </view>
+    <view class="weui-flex">
+        <view class="weui-flex__item home-color home-color3" bindtap='pickOverTimeSoonFun'><view class="placeholder">提货即将超时({{thjjcs}})</view></view>
+        <view class="weui-flex__item home-color home-color4" bindtap='arriveOverTimeSoonFun'><view class="placeholder">到达即将超时({{ddjjcs}})</view></view>
+    </view>
+    <view class="weui-flex">
+        <view class="weui-flex__item home-color home-color5" bindtap='overTimeNoPickFun'><view class="placeholder">超时未提货({{cswth}})</view></view>
+        <view class="weui-flex__item home-color home-color6" bindtap='overTimeNoArriveFun'><view class="placeholder">超时未到达({{cswdd}})</view></view>
+    </view>
+</view>
+
+<view class="weui-panel home-panel">
+    <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text home-panel-title">
+                数据统计
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">{{month}}<image src="../../images/month.png"></image></picker>
+            </view>
+            <view class="weui-media-box__desc">
+                <view class="weui-flex">
+                    <view class="weui-flex__item"><view class="placeholder">完成任务量：{{rwl}}</view></view>
+                    <view class="weui-flex__item"><view class="placeholder">排名：{{rwlpm}}</view></view>
+                </view>
+                <view class="weui-flex">
+                    <view class="weui-flex__item"><view class="placeholder">行驶公里数：{{gls}}</view></view>
+                    <view class="weui-flex__item"><view class="placeholder">排名：{{glspm}}</view></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="weui-panel home-panel">
+    <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text home-panel-title">圈子</view>
+            <view class="weui-media-box__desc">
+                <view wx:for="{{jr}}">
+                    {{item.time}} {{item.name}} 加入了圈子
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

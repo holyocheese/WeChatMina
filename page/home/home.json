@@ -1,0 +1,9 @@
+{
+  "window": {
+    "navigationBarTextStyle": "#fff",
+    "navigationBarTitleText": "一站快运司机",
+    "navigationBarBackgroundColor": "#000",
+    "backgroundColor": "#efeff4",
+    "enablePullDownRefresh": true
+  }
+}

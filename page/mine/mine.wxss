@@ -1,0 +1,8 @@
+/* page/mine/mine.wxss */
+.mine-top{background-color:#7a7b7f;padding:48rpx 40rpx;color:#fff;}
+.mine-top image{width:124rpx;height:124rpx;vertical-align: middle;}
+.mine-phone{font-size: 40rpx;}
+.mine-message{display: inline-block;vertical-align: middle;margin-left:40rpx;}
+.mine-cell{background-color: #fff;margin-top:30rpx;background-image:url(../../images/qhcl-active.png);background-size:36rpx 34rpx;background-repeat: no-repeat;background-position: 40rpx 30rpx;padding-left:45px;}
+.weui-cell::before{border:none}
+.mine-btn{margin:60rpx 30rpx;}
